@@ -17,7 +17,7 @@
       </div>
       <div class="btnWrap state">
         <button class="btn upload" v-on:click="addTodo">일정 등록</button>
-        <button class="btn cancel">취소</button>
+        <button class="btn cancel" @click="showInput = 0">취소</button>
       </div>
     </div>
   </div>
@@ -42,6 +42,7 @@ export default {
         var value = this.newTodoItem && this.newTodoItem.trim();
         this.$emit("addTodo", value);
         this.clearInput();
+        this.showInput = 0;
       }
     },
 
