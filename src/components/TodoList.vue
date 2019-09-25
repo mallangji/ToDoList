@@ -1,7 +1,7 @@
 <template>
   <section>
-    <transition-group name="list" tag="ul">
-      <li class="shadow" v-for="(todoItem, index) in propsdata" :key="index">
+    <transition-group name="list" tag="ul" class="wrap">
+      <li class="shadow item" v-for="(todoItem, index) in propsdata" :key="index">
         <i class="checkBtn fa fa-check" aria-hidden="true"></i>
         {{todoItem}}
         <span
@@ -29,25 +29,19 @@ export default {
 </script>
 
 <style scoped>
-ul {
+.wrap {
   margin-top: 0;
   padding-left: 0;
   list-style-type: none;
   text-align: left;
 }
-li {
+.item {
   display: flex;
-  margin: 0.5rem 0;
-  padding: 0 0.9rem;
-  height: 50px;
-  min-height: 50px;
-  line-height: 50px;
-  border-radius: 5px;
-  background-color: wheat;
+  padding: 15px 0;
+  border-bottom: solid 1px #e7e7e7;
 }
 .checkBtn {
   margin-right: 5px;
-  line-height: 45px;
   color: #62acde;
 }
 .removeBtn {

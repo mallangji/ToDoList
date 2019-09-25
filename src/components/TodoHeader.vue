@@ -1,6 +1,11 @@
 <template>
   <header>
-    <h1>TODO it!</h1>
+    <h1 class="tit">
+      환영합니다
+      <span>&#128587;</span>
+      Todo-list
+    </h1>
+    <p class="sub">지금 보고 계신 페이지는 vue.js 학습 목적을 가지고 만든 페이지 입니다.</p>
   </header>
 </template>
 
@@ -9,9 +14,14 @@ export default {};
 </script>
 
 <style scoped>
-h1 {
-  margin: 2.5rem 0 1.5rem;
+.tit {
+  margin: 2.5rem 0 1rem;
   font-weight: 900;
-  color: #2f3b52;
+  color: #333;
+}
+.sub {
+  margin: 0;
+  padding: 15px 0;
+  border-bottom: solid 1px #e7e7e7;
 }
 </style>

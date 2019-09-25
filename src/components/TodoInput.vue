@@ -1,14 +1,25 @@
 <template>
   <div>
-    <input
-      type="text"
-      v-model="newTodoItem"
-      placeholder="Type what you have to do"
-      v-on:keyup.enter="addTodo"
-    />
-    <span class="addContainer" v-on:click="addTodo">
-      <i class="addBtn fa fa-plus" aria-hidden="true"></i>
-    </span>
+    <div class="btn addItem" @click="showInput = 1" v-bind:class="{hidden : showInput == 1}">
+      <i class="addBtn fa fa-plus"></i>
+      일정 추가
+    </div>
+
+    <div v-if="showInput == 1">
+      <div>
+        <input
+          class="message"
+          type="text"
+          v-model="newTodoItem"
+          placeholder="Type what you have to do"
+          v-on:keyup.enter="addTodo"
+        />
+      </div>
+      <div class="btnWrap state">
+        <button class="btn upload" v-on:click="addTodo">일정 등록</button>
+        <button class="btn cancel">취소</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,8 +27,12 @@
 export default {
   data() {
     return {
-      newTodoItem: ""
+      newTodoItem: "",
+      showInput: 0
     };
+  },
+  created() {
+    this.showInput = 0;
   },
   methods: {
     //입력받은 텍스트 로컬스토리지에 저장
@@ -39,28 +54,37 @@ export default {
 </script>
 
 <style scoped>
-input:focus {
+.btn.addItem {
+  font-size: 15px;
+  vertical-align: middle;
+}
+.btn.addItem.hidden {
+  display: none;
+}
+.btn.addItem .addBtn {
+  margin-right: 10px;
+  color: #de4343;
+}
+
+.message {
+  display: block;
+  padding: 10px 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 15px;
+}
+.message:focus {
   outline: none;
 }
-.inputBox {
-  height: 50px;
-  line-height: 50px;
-  border-radius: 5px;
-  background-color: wheat;
+
+.btnWrap.state .btn {
+  padding: 8px 13px;
+  font-size: 15px;
+  border: none;
 }
-.inputBox input {
-  font-size: 0.9rem;
-  border-style: none;
-}
-.addContainer {
-  float: right;
-  display: block;
-  width: 3rem;
-  border-radius: 0 5px 5px 0;
-  background: linear-gradient(to right, #6478fb, #8763fb);
-}
-.addBtn {
-  color: white;
-  vertical-align: middle;
+.btnWrap.state .btn.upload {
+  color: #fff;
+  border-radius: 3px;
+  background-color: #ed4343;
 }
 </style>
