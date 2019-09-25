@@ -1,13 +1,13 @@
 <template>
   <section>
     <transition-group name="list" tag="ul">
-      <li class="shadow" v-for="(todoItem, index) in propsdata">
+      <li class="shadow" v-for="(todoItem, index) in propsdata" :key="index">
         <i class="checkBtn fa fa-check" aria-hidden="true"></i>
         {{todoItem}}
         <span
           type="button"
           class="removeBtn"
-          @click="removeTodo(TodoItem, index)"
+          @click="removeTodo(todoItem, index)"
         >
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         </span>
