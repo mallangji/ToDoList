@@ -3,7 +3,6 @@
     <TodoHeader></TodoHeader>
     <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
   </div>
 </template>
 
@@ -11,15 +10,13 @@
 import TodoHeader from "./components/TodoHeader.vue";
 import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
-import TodoFooter from "./components/TodoFooter.vue";
 
 export default {
   data() {
     return {
       todoItems: [
         "사용방법은 '작업추가'버튼을 클릭하여 일정을 등록해 보세요.",
-        "등록된 일정의 오른쪽 '휴지통' 아이콘을 클릭하면 해당일정이 삭제됩니다.",
-        "등록된 일정을 전부 지우고 싶을땐 페이지 상단의 'All Clear'를 클릭해 주세요!"
+        "등록된 일정의 오른쪽 '휴지통' 아이콘을 클릭하면 해당일정이 삭제됩니다."
       ] //데이터 속성 todoItems선언
     };
   },
@@ -53,8 +50,7 @@ export default {
   components: {
     TodoHeader: TodoHeader,
     TodoInput: TodoInput,
-    TodoList: TodoList,
-    TodoFooter: TodoFooter
+    TodoList: TodoList
   }
 };
 </script>
